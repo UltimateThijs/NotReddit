@@ -16,8 +16,8 @@ export class AuthService {
         @InjectModel(User.name) private userModel: Model<UserDocument>
     ) {}
 
-    async createUser(name: string, emailAddress: string): Promise<string> {
-        const user = new this.userModel({name, emailAddress});
+    async createUser(username: string, emailAddress: string, birthday: Date): Promise<string> {
+        const user = new this.userModel({username, emailAddress, birthday});
         await user.save();
         return user.id;
       }
@@ -34,20 +34,20 @@ export class AuthService {
     async registerUser(username: string, password: string, emailAddress: string) {
         const generatedHash = await hash(password, parseInt(process.env.SALT_ROUNDS, 10));
 
-        const identity = new this.identityModel({username, hash: generatedHash, emailAddress});
+        const identity = new this.identityModel(username, {hash: generatedHash, emailAddress});
 
         await identity.save();
     }
 
-    async generateToken(username: string, password: string): Promise<string> {
-        const identity = await this.identityModel.findOne({username});
+    async generateToken(emailAddress: string, password: string): Promise<string> {
+        const identity = await this.identityModel.findOne({ emailAddress });
 
         if (!identity || !(await compare(password, identity.hash))) throw new Error("user not authorized");
 
-        const user = await this.userModel.findOne({name: username});
+        const user = await this.userModel.findOne({emailAddress: emailAddress});
 
         return new Promise((resolve, reject) => {
-            sign({username, id: user.id}, process.env.JWT_SECRET, (err: Error, token: string) => {
+            sign({ emailAddress, id: user.id}, process.env.JWT_SECRET, (err: Error, token: string) => {
                 if (err) reject(err);
                 else resolve(token);
             });

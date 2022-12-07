@@ -1,4 +1,4 @@
-import { Token } from '@find-a-buddy/data';
+import { Token } from '@not-reddit/data';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { AuthController } from './auth.controller';
@@ -71,7 +71,7 @@ describe('AuthController', () => {
   describe('login', () => {
     it('should call the generateToken method of the auth service', async () => {
       const exampleUser = {
-        username: 'henk',
+        emailAddress: 'henk@henk.nl',
         password: 'supersecret123',
       };
       const mockedToken: Token = {token: 'mockedToken'};
@@ -82,7 +82,7 @@ describe('AuthController', () => {
 
       expect(await authController.login(exampleUser)).toStrictEqual(mockedToken);
 
-      expect(register).toHaveBeenCalledWith(exampleUser.username, exampleUser.password);
+      expect(register).toHaveBeenCalledWith(exampleUser.emailAddress, exampleUser.password);
     });
   });
 });

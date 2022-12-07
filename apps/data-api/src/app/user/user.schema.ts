@@ -3,8 +3,6 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 import { v4 as uuid } from 'uuid';
 import isEmail from 'validator/lib/isEmail';
 
-import { Meetup } from '../meetup/meetup.schema';
-
 export type UserDocument = User & Document;
 
 @Schema()
@@ -16,19 +14,13 @@ export class User {
     required: true,
     unique: true,
   })
-  name: string;
+  username: string;
 
   @Prop({
     required: true,
     default: [],
   })
   roles: string[];
-
-  @Prop({
-    required: true,
-    default: true,
-  })
-  isActive: boolean;
 
   @Prop({
     required: true,
@@ -39,21 +31,17 @@ export class User {
   })
   emailAddress: string;
 
-  // we don't use hooks to ensure the topics exist, as nestjs does not play nice
-  // https://github.com/nestjs/mongoose/issues/7
-  @Prop({default: []})
-  tutorTopics: string[];
-
-  @Prop({default: []})
-  pupilTopics: string[];
+  @Prop({
+    required: true,
+    default: new Date,
+  })
+  birthday: Date;
 
   @Prop({
-    default: [],
-    type: [MongooseSchema.Types.ObjectId],
-    // cannot use Meetup.name here, as it leads to a circular dependency
-    ref: 'Meetup',
+    required: true,
+    default: 0,
   })
-  meetups: Meetup[];
+  karma: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
