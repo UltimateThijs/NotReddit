@@ -14,7 +14,6 @@ export interface UserInfo extends UserIdentity {
 export interface User extends UserInfo {
     username: string;
     emailAddress: string;
-    birthday: Date;
 }
 
 export interface UserIdentity {
