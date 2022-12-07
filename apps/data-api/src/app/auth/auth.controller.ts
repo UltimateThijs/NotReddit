@@ -11,12 +11,14 @@ export class AuthController {
     @Post('register')
     async register(@Body() credentials: UserRegistration): Promise<ResourceId> {
         try {
+            console.log(credentials);
             await this.authService.registerUser(credentials.username, credentials.password, credentials.emailAddress);
     
             return {
-                id: await this.authService.createUser(credentials.username, credentials.emailAddress, credentials.birthday),
+                id: await this.authService.createUser(credentials.username, credentials.emailAddress),
             };
         } catch (e) {
+            console.log(e);
             throw new HttpException('EmailADDRESS invalid', HttpStatus.BAD_REQUEST);
         }
     }

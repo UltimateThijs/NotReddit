@@ -5,7 +5,6 @@ export interface UserCredentials {
 
 export interface UserRegistration extends UserCredentials {
     username: string;
-    birthday: Date;
 }
 
 export interface Token {

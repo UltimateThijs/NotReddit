@@ -52,9 +52,9 @@ describe('AuthService', () => {
 
   describe('create', () => {
     it('should create a new user', async () => {
-      const exampleUser = {username: 'mario', emailAddress: 'mario@mario.nl', birthday: new Date};
+      const exampleUser = {username: 'mario', emailAddress: 'mario@mario.nl'};
   
-      await service.createUser(exampleUser.username, exampleUser.emailAddress, exampleUser.birthday);
+      await service.createUser(exampleUser.username, exampleUser.emailAddress);
   
       const found = await mongoc.db('test').collection('users').findOne({username: exampleUser.username});
   
