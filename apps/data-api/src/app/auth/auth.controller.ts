@@ -14,10 +14,10 @@ export class AuthController {
             await this.authService.registerUser(credentials.username, credentials.password, credentials.emailAddress);
     
             return {
-                id: await this.authService.createUser(credentials.username, credentials.emailAddress),
+                id: await this.authService.createUser(credentials.username, credentials.emailAddress, credentials.birthday),
             };
         } catch (e) {
-            throw new HttpException('Username invalid', HttpStatus.BAD_REQUEST);
+            throw new HttpException('EmailADDRESS invalid', HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -25,7 +25,7 @@ export class AuthController {
     async login(@Body() credentials: UserCredentials): Promise<Token> {
         try {
             return {
-                token: await this.authService.generateToken(credentials.username, credentials.password)
+                token: await this.authService.generateToken(credentials.emailAddress, credentials.password)
             };
         } catch (e) {
             throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);

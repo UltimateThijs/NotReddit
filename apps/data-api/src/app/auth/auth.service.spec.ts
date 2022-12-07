@@ -52,13 +52,13 @@ describe('AuthService', () => {
 
   describe('create', () => {
     it('should create a new user', async () => {
-      const exampleUser = {name: 'mario', emailAddress: 'mario@mario.nl'};
+      const exampleUser = {username: 'mario', emailAddress: 'mario@mario.nl', birthday: new Date};
   
-      await service.createUser(exampleUser.name, exampleUser.emailAddress);
+      await service.createUser(exampleUser.username, exampleUser.emailAddress, exampleUser.birthday);
   
-      const found = await mongoc.db('test').collection('users').findOne({name: exampleUser.name});
+      const found = await mongoc.db('test').collection('users').findOne({username: exampleUser.username});
   
-      expect(found.name).toBe(exampleUser.name);
+      expect(found.username).toBe(exampleUser.username);
     });
   });
 

@@ -1,4 +1,5 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { LoggerMiddleware } from '../logger.middleware';
 import { RouterModule } from '@nestjs/core';
 
 import { MongooseModule } from '@nestjs/mongoose';
@@ -6,12 +7,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { TokenMiddleware } from './auth/token.middleware';
 import { DataModule } from './data.module';
-
+require('dotenv');
 @Module({
   imports: [
     MongooseModule.forRoot(
       //`mongodb+srv://${process.env.MONGO_USR}:${process.env.MONGO_PWD}@${process.env.MONGO_HOST}/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`
-      'mongodb://127.0.0.1:27017/buddy'
+      'mongodb://127.0.0.1:27017/NotReddit?retryWrites=true&w=majority'
     ),
     AuthModule,
     DataModule,
@@ -32,5 +33,6 @@ import { DataModule } from './data.module';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(TokenMiddleware).forRoutes('data-api');
+    // consumer.apply(LoggerMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL });
   }
 }
