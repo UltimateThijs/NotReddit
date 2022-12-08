@@ -30,14 +30,14 @@
             </button>
             <button
                 *ngIf="!userLoggedIn"
-                class="btn btn-primary float-end"
+                class="btn btn-outline-secondary float-end"
                 routerLink="login"
             >
                 Login
             </button>
             <button
                 *ngIf="userLoggedIn"
-                class="btn btn-primary float-end"
+                class="btn btn-outline-secondary float-end"
                 (click)="logout()"
             >
                 Log out

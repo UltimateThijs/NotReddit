@@ -19,7 +19,6 @@
           "apps/not-reddit/src/assets"
         ],
         "styles": [
-          "node_modules/bootstrap/dist/css/bootstrap.min.css",
           "apps/not-reddit/src/styles.css"
         ],
         "scripts": []
