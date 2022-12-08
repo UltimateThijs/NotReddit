@@ -3,7 +3,7 @@
       <div class="col">
         <a
           *ngIf="isAdmin"
-          class="btn btn-success d-inline float-end"
+          class="btn btn-secondary d-inline float-end"
           href="#"
           role="button"
           routerLink="new"
@@ -26,13 +26,13 @@
             <td>{{ user.karma }}</td>
             <td>{{ user.roles }}</td>
             <td *ngIf="isAdmin">
-              <button class="btn btn-warning" routerLink="{{ user.id }}/edit">
+              <button class="btn btn-secondary" routerLink="{{ user.id }}/edit">
                 Edit
               </button>
             </td>
             <td *ngIf="isAdmin">
               <button
-                class="btn btn-danger"
+                class="btn btn-secondary"
                 type="button"
                 (click)="deleteUser(user.id)"
               >

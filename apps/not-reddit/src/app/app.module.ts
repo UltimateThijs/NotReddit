@@ -19,6 +19,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 import { UserListComponent } from './pages/user-page/user-list/user-list.component';
 import { UserAddEditComponent } from './pages/user-page/user-add-edit/user-add-edit.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 // import { IUser } from '@schoolproject/data';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     UserListComponent,
     UserAddEditComponent,
     AboutPageComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
