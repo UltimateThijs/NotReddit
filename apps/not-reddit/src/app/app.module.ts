@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { JwtModule } from '@nestjs/jwt';
+import { UserPageComponent } from './pages/user-page/user-page.component';
+import { UserListComponent } from './pages/user-page/user-list/user-list.component';
+import { UserAddEditComponent } from './pages/user-page/user-add-edit/user-add-edit.component';
 // import { IUser } from '@schoolproject/data';
 
 @NgModule({
@@ -29,6 +32,9 @@ import { JwtModule } from '@nestjs/jwt';
     // AboutPageComponent,
     RegisterComponent,
     LoginComponent,
+    UserPageComponent,
+    UserListComponent,
+    UserAddEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,48 @@
+<div class="component list">
+    <div class="row">
+      <div class="col">
+        <a
+          *ngIf="isAdmin"
+          class="btn btn-success d-inline float-end"
+          href="#"
+          role="button"
+          routerLink="new"
+          >New</a
+        >
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <th>Id</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Karma</th>
+          <th>Roles</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users" class="table-row">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.emailAddress }}</td>
+            <td>{{ user.karma }}</td>
+            <td>{{ user.roles }}</td>
+            <td *ngIf="isAdmin">
+              <button class="btn btn-warning" routerLink="{{ user.id }}/edit">
+                Edit
+              </button>
+            </td>
+            <td *ngIf="isAdmin">
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="deleteUser(user.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- https://getbootstrap.com/docs/5.1/content/tables/ -->
+  </div>
