@@ -29,14 +29,11 @@ describe('TopicController', () => {
     it('should call getAll on the service', async () => {
       const exampleUser = {
         id: 'id123',
-        name: 'alexander',
-        isActive: true,
+        username: 'alexander',
         emailAddress: 'alexander@avans.nl',
         roles: [],
-        meetups: [],
-        tutorTopics: ["nosql"],
-        pupilTopics: ["flying"],
-        rating: 4,
+        birthday: new Date(),
+        karma: 0
       };
 
       const getAll = jest.spyOn(userService, 'getAll')
@@ -55,15 +52,11 @@ describe('TopicController', () => {
     it('should call getOne on the service with id from parameter', async () => {
       const exampleUser = {
         id: 'id123',
-        name: 'alexander',
-        isActive: true,
+        username: 'alexander',
         emailAddress: 'alexander@avans.nl',
         roles: [],
-        meetups: [],
-        tutorTopics: ["nosql"],
-        pupilTopics: ["flying"],
-        rating: 4,
-        reviews: [{id: 'r123', text: 'Great help', rating: 4, pupil: 'id4321', tutor: 'id123', datetime: new Date()}],
+        birthday: new Date(),
+        karma: 0,        
       };
 
       const getOne = jest.spyOn(userService, 'getOne')
