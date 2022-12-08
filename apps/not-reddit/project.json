@@ -18,7 +18,10 @@
           "apps/not-reddit/src/favicon.ico",
           "apps/not-reddit/src/assets"
         ],
-        "styles": ["apps/not-reddit/src/styles.css"],
+        "styles": [
+          "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "apps/not-reddit/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
