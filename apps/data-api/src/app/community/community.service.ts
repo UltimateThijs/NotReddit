@@ -17,27 +17,21 @@ export class CommunityService {
         @InjectModel(UserModel.name) private userModel: Model<UserDocument>
     ) {}
 
-    async getAll(token: Token): Promise<CommunityModel[]> {
-        const user = await this.userModel.aggregate([{ $match: { id: token.id }}]);
-        const actualUser = await (await this.userModel.findById(user)).populated('communities.posts');
-        console.log('Actualuser');
-        console.log(actualUser);
-        console.log(user);
+    // async getAll(): Promise<CommunityModel[]> {
+    //     return this.communities.find()
+    // }
 
-        return actualUser!.communities;
-    }
-
-    async getOneById(id: string, token: Token): Promise<CommunityModel> {
-        const user = await (await this.userModel.findOne({ $match: { id: token.id }, 'communities.id': id }, { 'communities.$': 1 })).populated('communities.posts');
-        if (!user) {
-            throw new HttpException(
-                'Unable to access a community that is not yours',
-                HttpStatus.FORBIDDEN
-            );
-        }
+    // async getOneById(id: string, token: Token): Promise<CommunityModel> {
+    //     const user = await (await this.userModel.findOne({ $match: { id: token.id }, 'communities.id': id }, { 'communities.$': 1 })).populated('communities.posts');
+    //     if (!user) {
+    //         throw new HttpException(
+    //             'Unable to access a community that is not yours',
+    //             HttpStatus.FORBIDDEN
+    //         );
+    //     }
         
-        return user.communities[0];
-    }
+    //     return user.communities[0];
+    // }
 
     async createCommunity(
         token: Token,
@@ -52,6 +46,7 @@ export class CommunityService {
                 name: community.name,
                 description: community.description
             });
+            newcommunity.save()
             actualUser?.communities.push(newcommunity);
             actualUser?.save();
         } catch (error) {
