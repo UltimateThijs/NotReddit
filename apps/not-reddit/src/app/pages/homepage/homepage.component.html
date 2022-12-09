@@ -1,3 +1,4 @@
 <h2>Welcome to NotReddit©!</h2>
-<p>Click <a routerLink="/register">here</a> to register an account.</p>
-<p>Already have an account? <a routerLink="/login">Log in</a></p>
+<p *ngIf="!userLoggedIn">Click <a routerLink="/register">here</a> to register an account.</p>
+<p *ngIf="!userLoggedIn">Already have an account? <a routerLink="/login">Log in</a></p>
+<p *ngIf="userLoggedIn">Use the navigation bar above to navigate to different pages.</p>

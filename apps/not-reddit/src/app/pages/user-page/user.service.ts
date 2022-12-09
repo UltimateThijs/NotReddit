@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser } from '@not-reddit/data';
+import { environment } from '../../../envorinments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,8 @@ export class UserService {
       Authorization: `${token}`,
     });
     return this.httpClient.get<IUser[]>(
-      'http://localhost:3333/api/data-api/user',
+      `${environment.API_URL}/data-api/user`,
+      // 'http://localhost:3333/api/data-api/user',
       {
         headers: headers,
       }
@@ -39,7 +41,8 @@ export class UserService {
       Authorization: `${token}`,
     });
     return this.httpClient.get<IUser>(
-      `http://localhost:3333/api/data-api/user/${id}`,
+      `${environment.API_URL}/data-api/user/${id}`,
+      // `http://localhost:3333/api/data-api/user/${id}`,
       {
         headers: headers,
       }
@@ -54,7 +57,8 @@ export class UserService {
       Authorization: `${token}`,
     });
     return this.httpClient.get<IUser>(
-      `http://localhost:3333/api/data-api/user/self`,
+      `${environment.API_URL}/data-api/user/self`,
+      // `http://localhost:3333/api/data-api/user/self`,
       {
         headers: headers,
       }
@@ -86,7 +90,8 @@ export class UserService {
       Authorization: `${token}`,
     });
     return this.httpClient.put<IUser>(
-      `http://localhost:3333/api/data-api/user/${updatedUser.id}`,
+      `${environment.API_URL}/data-api/user/${updatedUser.id}`,
+      // `http://localhost:3333/api/data-api/user/${updatedUser.id}`,
       updatedUser,
       {
         headers: headers,

@@ -8,18 +8,17 @@ import { CommunityService } from './community.service';
 export class CommunityController {
     constructor(private CommunityService: CommunityService) {};
 
-    // @Get()
-    // async getAll(): Promise<Community[]> {
-    //     return this.CommunityService.getAll();
-    // }
+    @Get()
+    async getAll(): Promise<Community[]> {
+        return this.CommunityService.getAll();
+    }
 
-    // @Get(':id')
-    // async getById(
-    //     @Param() id: string,
-    //     @InjectToken() token: Token
-    // ): Promise<Community> {
-    //     return this.CommunityService.getOneById(id['id'], token);
-    // }
+    @Get(':id')
+    async getById(
+        @Param() id: string,
+    ): Promise<Community> {
+        return this.CommunityService.getOneById(id['id']);
+    }
 
     @Post()
     async createCommunity(

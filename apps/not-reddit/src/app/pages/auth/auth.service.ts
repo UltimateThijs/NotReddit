@@ -8,6 +8,7 @@ import {
   Token,
 } from '@not-reddit/data';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { environment } from '../../../envorinments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,8 @@ export class AuthService {
     console.log('Register called');
 
     return this.httpClient.post<User>(
-      'http://localhost:3333/api/auth-api/register',
+      `${environment.API_URL}/auth-api/register`,
+      // 'http://localhost:3333/api/auth-api/register',
       userInfo,
       { headers: headers }
     );
@@ -38,7 +40,8 @@ export class AuthService {
     console.log('Login called');
 
     return this.httpClient.post<Token>(
-      'http://localhost:3333/api/auth-api/login',
+      `${environment.API_URL}/auth-api/login`,
+      // 'http://localhost:3333/api/auth-api/login',
       userLogin,
       { headers: headers }
     );

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+      <div>
+        <div>
+          <h2>Communities</h2>
+        </div>
+        <div class="row">
+          <div class="d-flex justify-content-end">
+            <button *ngIf="isLoggedIn" class="btn btn-secondary" routerLink="new">
+              Create a community
+            </button>
+          </div>
+        </div>
+        <div class="row row-cols-4">
+          <div *ngFor="let community of communities" class="col">
+            <div routerLink="detail/{{ community.id }}">
+                <div class="card" routerLink="{{ community.id }}">
+                    <h3>
+                        <strong routerLink="{{ community.id }}">{{
+                        community.name
+                        }}</strong>
+                    </h3>
+                    <p class="fst-italic">{{ community.description }}</p>
+                    <p>
+                        {{ community.posts.length }} posts
+                    </p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
