@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { v4 as uuid } from 'uuid';
 import isEmail from 'validator/lib/isEmail';
+import { Community, communitySchema } from '../community/community.schema'
 
 export type UserDocument = User & Document;
 
@@ -42,6 +43,13 @@ export class User {
     default: 0,
   })
   karma: number;
+
+  @Prop({
+    required: true,
+    default: [],
+    type: [communitySchema],
+  })
+  communities: Community[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

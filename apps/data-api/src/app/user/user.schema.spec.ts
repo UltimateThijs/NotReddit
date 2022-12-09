@@ -67,12 +67,6 @@ describe('User Schema', () => {
     expect(model.roles).toStrictEqual([]);
   });
 
-  it('is active by default', () => {
-    const model = new userModel();
-
-    expect(model.isActive).toBe(true);
-  });
-
   it('has a required email address', () => {
     const model = new userModel();
 
@@ -87,23 +81,5 @@ describe('User Schema', () => {
     const err = model.validateSync();
 
     expect(err.errors.emailAddress).toBeInstanceOf(Error);
-  });
-
-  it('has an empty list as default tutor topics', () => {
-    const model = new userModel();
-
-    expect(model.tutorTopics).toStrictEqual([]);
-  });
-
-  it('has an empty list as default pupil topics', () => {
-    const model = new userModel();
-
-    expect(model.pupilTopics).toStrictEqual([]);
-  });
-
-  it('has an empty list as default meetups', () => {
-    const model = new userModel();
-
-    expect(model.meetups).toStrictEqual([]);
   });
 });
