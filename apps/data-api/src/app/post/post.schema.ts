@@ -6,6 +6,7 @@ import mongoose, {
     Schema as MongooseSchema,
 } from 'mongoose';
 import { v4 as uuid } from 'uuid';
+import { Comment } from '../comment/comment.schema';
 
 export type PostDocument = HydratedDocument<Post>;
 
@@ -19,6 +20,12 @@ export class Post {
     content: string;
     @Prop({ default: false, required: true, unique: false })
     isNSFW: boolean;
+    @Prop({
+        default: [],
+        type: [MongooseSchema.Types.ObjectId],
+        ref: 'Comment',
+    })
+    comments: Comment[];
 }
 
 export const postSchema = SchemaFactory.createForClass(Post);

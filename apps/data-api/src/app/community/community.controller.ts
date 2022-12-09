@@ -8,11 +8,18 @@ import { CommunityService } from './community.service';
 export class CommunityController {
     constructor(private CommunityService: CommunityService) {};
 
-    @Get()
-    async getAll(@InjectToken() token: Token): Promise<Community[]> {
-        console.log(token);
-        return this.CommunityService.getAll(token);
-    }
+    // @Get()
+    // async getAll(): Promise<Community[]> {
+    //     return this.CommunityService.getAll();
+    // }
+
+    // @Get(':id')
+    // async getById(
+    //     @Param() id: string,
+    //     @InjectToken() token: Token
+    // ): Promise<Community> {
+    //     return this.CommunityService.getOneById(id['id'], token);
+    // }
 
     @Post()
     async createCommunity(
@@ -20,13 +27,5 @@ export class CommunityController {
         @Body() body: Community
     ): Promise<Community> {
         return await this.CommunityService.createCommunity(token, body);
-    }
-
-    @Get(':id')
-    async getById(
-        @Param() id: string,
-        @InjectToken() token: Token
-    ): Promise<Community> {
-        return this.CommunityService.getOneById(id['id'], token);
     }
 }

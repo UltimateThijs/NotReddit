@@ -33,7 +33,8 @@ describe('TopicController', () => {
         emailAddress: 'alexander@avans.nl',
         roles: [],
         birthday: new Date(),
-        karma: 0
+        karma: 0,
+        communities: []
       };
 
       const getAll = jest.spyOn(userService, 'getAll')
@@ -56,7 +57,8 @@ describe('TopicController', () => {
         emailAddress: 'alexander@avans.nl',
         roles: [],
         birthday: new Date(),
-        karma: 0,        
+        karma: 0,       
+        communities: [], 
       };
 
       const getOne = jest.spyOn(userService, 'getOne')
