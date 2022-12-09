@@ -6,6 +6,8 @@ import { UserAddEditComponent } from './pages/user-page/user-add-edit/user-add-e
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { CommunityoverviewComponent} from './pages/communityoverview/communityoverview.component';
+import { CommunityDetailComponent } from './pages/communityoverview/community-detail/community-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -15,6 +17,9 @@ const routes: Routes = [
   { path: 'user/:id/edit', pathMatch: 'full', component: UserAddEditComponent },
   { path: 'register', pathMatch: 'full', component: RegisterComponent },
   { path: 'login', pathMatch: 'full', component: LoginComponent },
+
+  { path: 'community', pathMatch: 'full', component: CommunityoverviewComponent},
+  { path: 'community/detail/:id', pathMatch: 'full', component: CommunityDetailComponent},
 ];
 
 @NgModule({

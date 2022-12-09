@@ -17,21 +17,13 @@ export class CommunityService {
         @InjectModel(UserModel.name) private userModel: Model<UserDocument>
     ) {}
 
-    // async getAll(): Promise<CommunityModel[]> {
-    //     return this.communities.find()
-    // }
+    async getAll(): Promise<CommunityModel[]> {
+        return this.communityModel.find()
+    }
 
-    // async getOneById(id: string, token: Token): Promise<CommunityModel> {
-    //     const user = await (await this.userModel.findOne({ $match: { id: token.id }, 'communities.id': id }, { 'communities.$': 1 })).populated('communities.posts');
-    //     if (!user) {
-    //         throw new HttpException(
-    //             'Unable to access a community that is not yours',
-    //             HttpStatus.FORBIDDEN
-    //         );
-    //     }
-        
-    //     return user.communities[0];
-    // }
+    async getOneById(id: string): Promise<CommunityModel> {
+        return this.communityModel.findOne({id: id})
+    }
 
     async createCommunity(
         token: Token,

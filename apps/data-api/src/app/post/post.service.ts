@@ -20,6 +20,11 @@ export class PostService {
         @InjectModel(CommunityModel.name) private communityModel: Model<CommunityDocument>
     ) {}
 
+    async getAll(): Promise<PostModel[]> {
+        return this.postModel.find()
+    }
+
+
     async createPost(
         token: Token,
         post: IPost
